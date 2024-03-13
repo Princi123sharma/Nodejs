@@ -14,6 +14,11 @@ app.get("/",(req,res)=>{
 app.get("/about",(req,res)=>{
     res.send("this is the about  page");
 })
+
+app.get("/test", ()=>{
+    res.send("Testing Route")
+})
+
 app.listen(8000,()=>{
     console.log("listeing");
 })
