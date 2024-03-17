@@ -6,42 +6,54 @@ const bodyParser = require('body-parser')
 const static = path.join(__dirname, "../public");
 
 app.set("view engine", "ejs"); 
-app.use(bodyParser.urlencoded({extended: true}))
+// app.use(bodyParser.urlencoded({extended: true}))
 // app.use(cors())
 
-let login  = false;
-const auth = function(req, res, next){
-  if(login){
-    next()
-  }else{
-    res.redirect('/login')
-    next()
-  }
-}
-app.use(auth)
+
+app.get("/",(req,res)=>{
+  // const stud={
+  //   name:"princi",
+  //   rollno:123,
+  //   designation:"learner"
+  // }
+  app.render("index1");
+})
+
+
+// let login  = false;
+// const auth = function(req, res, next){
+//   if(login){
+//     next()
+//   }else{
+//     res.redirect('/login')
+//     next()
+//   }
+// }
+// app.use(auth)
 
 
 // app.use(express.static(static));
 
-app.get("/", (req, res) => {
-  
-  res.render("index1");
+
+
+// app.get('/login', (req, res) => {
+//   login = true;
+//   res.send("Login Page");
+// })
+
+// app.post("/add", (req, res) => {
+//   console.log(req.body)
+//   let name = req.body.name
+//   res.send("Data: ", name)
+// })
+
+app.get("/",(req,res)=>{
+  res.send("this is the home page");
 });
-
-app.get('/login', (req, res) => {
-  login = true;
-  res.send("Login Page");
-})
-
-app.post("/add", (req, res) => {
-  console.log(req.body)
-  let name = req.body.name
-  res.send("Data: ", name)
-})
 
 
 app.get("/logout", (req, res) => {
-  login = false;
+  // login = false;
   res.send("this is the about  page");
 });
 
