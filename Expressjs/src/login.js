@@ -17,12 +17,26 @@ app.get("/", (req, res) => {
 });
 hbs.registerPartials(partialpath);
 
-app.get("/contact", (req, res) => {
+app.get("/login", (req, res) => {
   res.render("contact");
 });
 app.get("/about", (req, res) => {
   res.send("this is the about page");
 });
+
+app.get("/login/*",(req,res)=>{
+  res.render('unfoundpg',{
+   msg:"oops this page can'nt exist in our login section!"
+  })
+})
+
+
+
+app.get("*",(req,res)=>{
+   res.render('unfoundpg',{
+    msg:"oops this page can'nt exist in our website!"
+   })
+})
 app.listen(8000, () => {
   console.log("8000 port is listing now");
 });
