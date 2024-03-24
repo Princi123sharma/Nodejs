@@ -1,6 +1,6 @@
-**ExpressJS Projects Repository**
+**NODEJS Repository**
 
-Welcome to the ExpressJS Projects repository! This repository is dedicated to practicing and building various projects using ExpressJS, a powerful web application framework for Node.js. Whether you're a beginner looking to learn Express or an experienced developer honing your skills, this repository provides a platform for experimentation and growth.
+Welcome to the NodeJS repository! This repository is dedicated to practicing and building various projects using ExpressJS, a powerful web application framework for Node.js. Whether you're a beginner looking to learn Express or an experienced developer honing your skills, this repository provides a platform for experimentation and growth.
 
 ## Getting Started
 
@@ -18,16 +18,19 @@ To begin working with the projects in this repository, follow these simple steps
    npm i express
    npm i hbs
    npm i ejs
+   npm i nodemon
 
    ```
 
 3. **Start the Server**: 
    ```
-   
+   cd Expressjs 
+   cd src
+   nodemon login.js
    ```
 
 4. **Explore Projects**: 
-   Visit `http://localhost:8000` in your web browser to see the landing page. From there, navigate to individual project directories to explore and run specific projects.
+   Visit `http://localhost:8000` in your web browser to see the Home page. From there, navigate to individual project directories to explore and run specific projects.
 
 ## Projects Overview
 
