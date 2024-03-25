@@ -21,6 +21,11 @@ const schema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
+    lowercase:true,
+    trim:true,
+    minlength:2,
+    maxlength:20
+    
   },
   department: String,
   classesassign: Number,
@@ -34,45 +39,80 @@ const Faculty = mongoose.model("Faculty", schema);
 
 const createDocument = async () => {
   try {
-    const facultyOne = new Faculty({
-      name: "Priush narwariya",
-      department: "CS",
-      classesassign: 3,
-    });
+    // const facultyOne = new Faculty({
+    //   name: "Priush narRwariya",
+    //   department: "CS",
+    //   classesassign: 3,
+    // });
 
-    const facultyTwo = new Faculty({
-      name: "Deepak gupta",
-      department: "CS",
-      classesassign: 2,
-    });
+    // const facultyTwo = new Faculty({
+    //   name: "Deepak gupta",
+    //   department: "CS",
+    //   classesassign: 2,
+    // });
 
-    const facultyThree = new Faculty({
-      name: "CP bhargav",
-      department: "CS",
-      classesassign: 4,
-    });
+    // const facultyThree = new Faculty({
+    //   name: "CP bhargav",
+    //   department: "CS",
+    //   classesassign: 4,
+    // });
 
     const facultyFour = new Faculty({
-      name: "Rashimi pandey",
+      name: "i",
       department: "CS",
-      classesassign: 3,
+      classesassign: 10,
     });
-    await Faculty.insertMany([
-      facultyOne,
-      facultyTwo,
-      facultyThree,
-      facultyFour,
-    ]);
-    // console.log(result);
+   const result= await Faculty.insertMany([facultyFour]);
+    console.log(result);
   } catch (err) {
     console.log(err);
   }
 };
-// createDocument();
+createDocument();
 
 const readdocument = async () => {
-  const result = await Faculty.find({ classesassign: 3 }).select({ name: 1 });
+  const result = await Faculty.find().select({ name: 1 }).sort({ name: -1 });
   console.log(result);
 };
 
-readdocument();
+// readdocument();
+
+//update the document
+
+const updatedocument = async () => {
+  try {
+    const result = await  Faculty.findByIdAndUpdate(
+      { _id: "6601094eac43c01c6e00e0a1" },
+      {
+        $set: { department: "cs",name:"Nitin Dixit" },
+      },
+      {
+        new:true,
+        useFindAndModify:false
+      }
+    );
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+
+};
+
+// updatedocument();
+
+// deletedocument by using mongoose
+
+const deletedocument=async (_id)=>{
+
+  try{
+  const result=  await Faculty.deleteOne({_id})
+  }
+  catch(err){
+   console.log(err);
+  }
+
+}
+
+
+
+// deletedocument("660195db48a0d1cafd6613f9");
