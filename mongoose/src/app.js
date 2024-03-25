@@ -1,11 +1,10 @@
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-const { Student } = require("./Student");
+// const dotenv = require("dotenv");
 
-dotenv.config();
+// dotenv.config();
 
 mongoose
-  .connect(process.env.MONGO_URI, {
+  .connect("mongodb://127.0.0.1:27017/facultydata", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -16,12 +15,64 @@ mongoose
     console.log("Error: ", err);
   });
 
-// const princi = new Student({name: "Ravi", age: 19, class: "BCA"});
-// princi.save()
+//define the schema of the database
 
-async function allData() {
-  const students = await Student.findById("660078dcad2c988c5235a525");
-  console.log(students)
-}
+const schema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  department: String,
+  classesassign: Number,
+});
 
-allData()
+//create a models means defining the collections of the database
+
+const Faculty = mongoose.model("Faculty", schema);
+
+//create and insert the document
+
+const createDocument = async () => {
+  try {
+    const facultyOne = new Faculty({
+      name: "Priush narwariya",
+      department: "CS",
+      classesassign: 3,
+    });
+
+    const facultyTwo = new Faculty({
+      name: "Deepak gupta",
+      department: "CS",
+      classesassign: 2,
+    });
+
+    const facultyThree = new Faculty({
+      name: "CP bhargav",
+      department: "CS",
+      classesassign: 4,
+    });
+
+    const facultyFour = new Faculty({
+      name: "Rashimi pandey",
+      department: "CS",
+      classesassign: 3,
+    });
+    await Faculty.insertMany([
+      facultyOne,
+      facultyTwo,
+      facultyThree,
+      facultyFour,
+    ]);
+    // console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+};
+// createDocument();
+
+const readdocument = async () => {
+  const result = await Faculty.find({ classesassign: 3 }).select({ name: 1 });
+  console.log(result);
+};
+
+readdocument();
