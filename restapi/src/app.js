@@ -8,15 +8,29 @@ const port=process.env.PORT || 3000
 app.use(express.json());
 
 //create a new student
-app.post("/student",(req,res)=>{
-    console.log(req.body);
-    const user=new Student(req.body);
-    user.save().then((user)=>{
-        res.status(201).send(user)
-    }).catch((err)=>{
-        res.status(400).send(err);
-    });
+// app.post("/student",(req,res)=>{
+//     console.log(req.body);
+//     const user=new Student(req.body);
+//     user.save().then((user)=>{
+//         res.status(201).send(user)
+//     }).catch((err)=>{
+//         res.status(400).send(err);
+//     });
   
+// })
+
+app.post("/student",async(req,res)=>{
+    console.log(req.body);
+  
+    try{
+        const user=new Student(req.body);
+         const createuser=await user.save();
+         res.status(201).send(createuser);
+
+    }
+    catch(e){
+        res.status(400).send(e);
+    }
 })
 app.listen(port,()=>{
     console.log(`i'm listing on this port ${port}`)
