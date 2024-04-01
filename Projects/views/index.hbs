@@ -6,22 +6,39 @@
     <title>Document</title>
 </head>
 <style>
-    #main{
-        height:100vh;
-        width:100%;
-        background: #000;
-    }
+   body{
+    background-color: rgba(0, 0, 0, 0.349);
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+   }
     .nav-bar{
+
         height:10vh;
         width:100%;
         background-color: #dddadd;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        
     }
+    
+    .link a{
+        text-decoration: none;
+        margin: 10px;
+        font-size: 20px;
+    }
+    
 </style>
 <body>
-    <div id="main">
-        <nav class="nav-bar">
-             
-        </nav>
-    </div>
+    <nav class="nav-bar">
+     
+         <div class="link">
+            <a href="">Home</a>
+            <a href="/register">Registration</a>
+            <a href="/login">Login/Signup</a>
+         </div>
+
+    </nav>
 </body>
 </html>
