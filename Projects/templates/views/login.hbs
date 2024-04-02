@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+</head>
+  <style>
+    *{ box-sizing: border-box; margin:0; padding:0; } #div{ height:100vh;
+    width:100%; position: relative; background-color: black; position: relative; } .center{
+    position: absolute; background-color: #ffffff42;
+    margin-top: 3%; height: 85%; width:60%;
+    left:20%; top:5%; border-radius: 10px; box-shadow: 5px 5px 5px 5px
+    rgba(84,83, 83, 0.073); } .center img{ height:50%; width:50%; contain:
+    cover; } label{ font-size: 20px; font-weight: 600; margin-left: 30%;;
+    margin-top: 10%; } input{ width:30%; height:5%; margin: 8px; padding:10px;
+    border-radius: 10px; border: none; margin-left: 30%; }
+    input[type="checkbox"]{ margin-top: 8%; margin-left: 30%; height:15px;
+    width:15px; } button{ margin-left: 30%; margin-top: 10%; padding:20px;
+    border-radius: 20px; border: none; width:30%; font-size: 20px; font-weight:
+    400; cursor: pointer;
+     }
+
+  </style>
+  <body>
+    {{>navbar}}
+    <div id="div">
+
+    </div>
+   \
+    <div class="center">
+      <form action="/login" method="POST">
+       <label>Email:</label><br />
+      <input type="email" name="email" id="" /><br />
+      <label>Password:</label><br />
+      <input type="password" name="password" id="" /><br />
+      <input type="checkbox" name="" id="" />I agree to the term and
+      condations!!<br />
+
+        <input type="submit" name="submit">
+      </form>
+
+    </div>
+
+   
+  </body>
+</html>
