@@ -6,7 +6,7 @@ const hbs = require("hbs");
 require("./src/db/conn");
 const register = require("./src/model/model");
 
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const templatepath = path.join(__dirname, "./templates/views");
 console.log(__dirname);
@@ -52,16 +52,18 @@ app.get("/login", (req, res) => {
 app.post("/login", async (req, res) => {
   try {
     const email = req.body.email;
+    const enterpass=req.body.password;
     const useremail = await register.findOne({ Email: email });
-    const password = req.body.password;
+    const match=await bcrypt.compare(enterpass,useremail.password);
 
-    if (password === useremail.password) {
+     
+    if (match) {
       res.render("index");
     } else {
-      res.send("invalid login destails:");
+      res.send("invalid password:");
     }
   } catch (e) {
-    res.status(400).send(e);
+    res.status(400).send("invalid login details:");
   }
 });
 
