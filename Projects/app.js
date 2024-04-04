@@ -76,6 +76,45 @@ app.post("/login", async (req, res) => {
 
 // securepass("nishu");
 
+//authentication--To verify that, is it a valid user or not!!
+
+const jwt=require("jsonwebtoken");
+const generatetoken=async ()=>{
+      const createtoken=await jwt.sign({_id:"660d5cede27a3d786ffba9d2"},"mynameisprincisharma123",{
+        expiresIn:"2 minute"
+      });
+      console.log(createtoken);
+
+      const verifytoken= await jwt.verify(createtoken,"mynameisprincisharma123");
+      console.log(verifytoken);
+}
+
+
+
+
+
+
+
+generatetoken();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.listen(port, () => {
   console.log("connect to the server");
 });
